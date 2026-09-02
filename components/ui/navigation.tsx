@@ -31,9 +31,9 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onTabChange,
 }) => {
   return (
-    <header className="w-full bg-white border-b border-[#E2E8F0] px-6 py-3.5 flex items-center justify-between">
+    <header className="w-full bg-white/80 backdrop-blur-md border-b border-[#E2E8F0]/60 px-6 py-3.5 flex items-center justify-between sticky top-0 z-50">
       <div className="flex items-center gap-8">
-        <div className="flex items-center gap-2 cursor-pointer">
+        <div className="flex items-center gap-2.5 cursor-pointer">
           <VertexLogoIcon className="w-6 h-6" />
           <span className="font-serif text-xl font-bold tracking-tight text-[#0F172A]">
             Vertex
@@ -43,9 +43,9 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
         <nav className="flex items-center gap-6 text-sm font-medium">
           <button
             onClick={() => onTabChange?.("courses")}
-            className={`transition-colors ${
+            className={`transition-colors cursor-pointer ${
               activeTab === "courses"
-                ? "text-[#F97316]"
+                ? "text-[#EA580C] font-semibold"
                 : "text-[#64748B] hover:text-[#0F172A]"
             }`}
           >
@@ -53,15 +53,44 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </button>
           <button
             onClick={() => onTabChange?.("my-learning")}
-            className={`transition-colors ${
+            className={`transition-colors cursor-pointer ${
               activeTab === "my-learning"
-                ? "text-[#F97316]"
+                ? "text-[#EA580C] font-semibold"
                 : "text-[#64748B] hover:text-[#0F172A]"
             }`}
           >
             My Learning
           </button>
         </nav>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button
+          aria-label="Notifications"
+          className="w-9 h-9 rounded-full flex items-center justify-center text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] transition-colors cursor-pointer"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="1.75"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+            />
+          </svg>
+        </button>
+
+        <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] bg-[#F1F5F9] cursor-pointer">
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120"
+            alt="User profile avatar"
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </header>
   );

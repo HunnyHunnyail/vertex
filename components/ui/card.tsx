@@ -14,11 +14,7 @@ export interface CourseCardProps {
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({
-  logo = (
-    <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center font-bold text-lg">
-      N
-    </div>
-  ),
+  logo,
   title,
   description,
   level = "Intermediate",
@@ -29,29 +25,29 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className="group relative flex flex-col justify-between rounded-[16px] border border-[#E2E8F0] bg-white p-6 shadow-sm transition-all hover:shadow-md hover:border-[#CBD5E1] cursor-pointer"
+      className="group flex flex-col justify-between rounded-[20px] border border-[#E2E8F0] bg-white p-7 shadow-xs hover:shadow-md hover:border-[#CBD5E1] transition-all cursor-pointer"
     >
       <div>
-        <div className="mb-4">{logo}</div>
-        <h3 className="text-heading-3 text-[#0F172A] font-semibold mb-2 group-hover:text-[#F97316] transition-colors">
+        <div className="mb-5 flex items-center">{logo}</div>
+        <h3 className="font-serif text-[20px] leading-[28px] text-[#0F172A] font-semibold mb-3 group-hover:text-[#EA580C] transition-colors">
           {title}
         </h3>
-        <p className="text-body text-[#64748B] line-clamp-2 mb-6">
+        <p className="text-[14px] leading-[22px] text-[#64748B] mb-8 font-normal">
           {description}
         </p>
       </div>
 
-      <div className="flex items-center gap-4 text-xs text-[#64748B] border-t border-[#F1F5F9] pt-4">
-        <span className="inline-flex items-center gap-1">
-          <Signal className="w-3.5 h-3.5 text-[#64748B]" />
+      <div className="flex items-center justify-between text-[12px] text-[#64748B] border-t border-[#F1F5F9] pt-4 font-medium gap-2">
+        <span className="inline-flex items-center gap-1 whitespace-nowrap">
+          <Signal className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" />
           {level}
         </span>
-        <span className="inline-flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5 text-[#64748B]" />
+        <span className="inline-flex items-center gap-1 whitespace-nowrap">
+          <Clock className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" />
           {duration}
         </span>
-        <span className="inline-flex items-center gap-1">
-          <Layers className="w-3.5 h-3.5 text-[#64748B]" />
+        <span className="inline-flex items-center gap-1 whitespace-nowrap">
+          <Layers className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" />
           {modulesCount}
         </span>
       </div>
