@@ -1,5 +1,13 @@
+"use client";
+
 import React from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
+import {
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Show } from "@clerk/nextjs";
 
 // 1. Vertex Logo Icon
 export const VertexLogoIcon: React.FC<{ className?: string }> = ({
@@ -84,13 +92,27 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </svg>
         </button>
 
-        <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E2E8F0] bg-[#F1F5F9] cursor-pointer">
-          <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120"
-            alt="User profile avatar"
-            className="w-full h-full object-cover"
+        <Show when="signed-out">
+          <SignInButton mode="modal">
+            <button className="text-sm font-medium text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer">
+              Sign in
+            </button>
+          </SignInButton>
+          <SignUpButton mode="modal">
+            <button className="text-sm font-medium text-white bg-[#F97316] hover:bg-[#EA580C] px-4 py-2 rounded-lg transition-colors cursor-pointer">
+              Sign up
+            </button>
+          </SignUpButton>
+        </Show>
+        <Show when="signed-in">
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: "w-9 h-9",
+              },
+            }}
           />
-        </div>
+        </Show>
       </div>
     </header>
   );
