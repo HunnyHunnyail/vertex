@@ -69,6 +69,7 @@ export const lesson = defineType({
           name: 'alt',
           title: 'Alternative Text',
           type: 'string',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),

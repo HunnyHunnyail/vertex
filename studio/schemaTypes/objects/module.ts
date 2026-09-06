@@ -1,7 +1,7 @@
 import { defineType, defineField, defineArrayMember } from 'sanity'
 import { OlistIcon } from '@sanity/icons'
 
-export const module = defineType({
+export const moduleObjectType = defineType({
   name: 'module',
   title: 'Module',
   type: 'object',

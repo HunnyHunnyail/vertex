@@ -1,12 +1,12 @@
 import 'server-only'
 import { createClient } from 'next-sanity'
 import { apiVersion, dataset, projectId } from '../env'
-import { token } from './token'
+import { assertToken } from './token'
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
   useCdn: false,
-  token,
+  token: assertToken(),
 })

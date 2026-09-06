@@ -8,7 +8,8 @@
     "build": "sanity build",
     "start": "sanity start",
     "deploy": "sanity deploy",
-    "typegen": "sanity schema extract && sanity typegen generate"
+    "typegen": "sanity schema extract && sanity typegen generate",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@sanity/icons": "^3.7.4",

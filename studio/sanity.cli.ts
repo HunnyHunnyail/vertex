@@ -1,13 +1,20 @@
 import { defineCliConfig } from 'sanity/cli'
 
-const projectId =
-  process.env.SANITY_STUDIO_PROJECT_ID ||
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-  'om6fpf93'
-const dataset =
-  process.env.SANITY_STUDIO_DATASET ||
-  process.env.NEXT_PUBLIC_SANITY_DATASET ||
-  'production'
+function assertValue<T>(v: T | undefined, errorMessage: string): T {
+  if (v === undefined) {
+    throw new Error(errorMessage)
+  }
+  return v
+}
+
+const projectId = assertValue(
+  process.env.SANITY_STUDIO_PROJECT_ID,
+  'Missing environment variable: SANITY_STUDIO_PROJECT_ID'
+)
+const dataset = assertValue(
+  process.env.SANITY_STUDIO_DATASET,
+  'Missing environment variable: SANITY_STUDIO_DATASET'
+)
 
 export default defineCliConfig({
   api: {
@@ -17,5 +24,6 @@ export default defineCliConfig({
   typegen: {
     path: '../{app,components,sanity,lib}/**/*.{ts,tsx}',
     generates: '../sanity.types.ts',
+    overloadClientMethods: true,
   },
 })

@@ -33,6 +33,7 @@ export const instructor = defineType({
           name: 'alt',
           title: 'Alternative Text',
           type: 'string',
+          validation: (Rule) => Rule.required(),
         }),
       ],
     }),
