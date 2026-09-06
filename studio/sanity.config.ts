@@ -4,21 +4,15 @@ import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemaTypes'
 import { structure } from './structure'
 
-function assertValue<T>(v: T | undefined, errorMessage: string): T {
-  if (v === undefined) {
-    throw new Error(errorMessage)
-  }
-  return v
-}
+const projectId =
+  process.env.SANITY_STUDIO_PROJECT_ID ||
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+  'om6fpf93'
 
-const projectId = assertValue(
-  process.env.SANITY_STUDIO_PROJECT_ID,
-  'Missing environment variable: SANITY_STUDIO_PROJECT_ID'
-)
-const dataset = assertValue(
-  process.env.SANITY_STUDIO_DATASET,
-  'Missing environment variable: SANITY_STUDIO_DATASET'
-)
+const dataset =
+  process.env.SANITY_STUDIO_DATASET ||
+  process.env.NEXT_PUBLIC_SANITY_DATASET ||
+  'production'
 
 export default defineConfig({
   name: 'default',
